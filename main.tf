@@ -5,10 +5,10 @@ data "template_file" "shell-script" {
 data "template_file" "git_application_user_data" {
     template = "${file("templates/gitlab_application_user_data.tpl")}"  
     vars = {
-        postgresql_database = "${aws_db_instance.gitlab_postgres.name}"
-        postgresql_username = "${aws_db_instance.gitlab_postgres.username}"
-        postgresql_password = "${var.gitlab_postgres_password}"
-        postgresql_endpoint = "${aws_db_instance.gitlab_postgres.address}"
+        postgresql_database = "${aws_db_instance.gitlab_postgresql.name}"
+        postgresql_username = "${aws_db_instance.gitlab_postgresql.username}"
+        postgresql_password = "${var.gitlab_postgresql_password}"
+        postgresql_endpoint = "${aws_db_instance.gitlab_postgresql.address}"
         redis_endpoint = "${aws_elasticache_replication_group.gitlab_redis.primary_endpoint_address}"
         cidr        = "${var.vpc_cidr}"
         gitlab_url   = "http://${aws_lb.alb_apps.dns_name}"
