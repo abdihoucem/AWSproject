@@ -124,5 +124,13 @@ variable "private_DB_subnet_2b_cidr" {
 
 
 
+variable "private_subnet_2a_cidr" {
+  description = "CIDR for the Private 2a Subnet"
+  default     = "10.0.2.1/25"
+}
 
+variable "private_subnet_2b_cidr" {
+  description = "CIDR for the Private 2b Subnet"
+  default     = "10.0.2.129/25"
+}
 

@@ -16,14 +16,14 @@ resource "aws_subnet" "public_subnet_2" {
 # Define The private subnets
 resource "aws_subnet" "private_subnet_1" {
   vpc_id            = aws_vpc.default.id
-  cidr_block        = var.private_DB_subnet_2a_cidr
+  cidr_block        = var.private_subnet_2a_cidr
   availability_zone = "us-east-2a"
 
 }
 
 resource "aws_subnet" "private_subnet_2" {
   vpc_id            = aws_vpc.default.id
-  cidr_block        = var.private_DB_subnet_2b_cidr
+  cidr_block        = var.private_subnet_2b_cidr
   availability_zone = "us-east-2b"
 
 }
