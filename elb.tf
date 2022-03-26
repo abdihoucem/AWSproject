@@ -59,8 +59,8 @@ resource "aws_lb_listener" "git-80" {
 
 resource "aws_launch_configuration" "git" {
   name_prefix                 = "git-"
-  image_id                    = "data.aws_ami.amazon.id"
-  instance_type               = "t3.medium"
+  image_id                    = "ami-0ba62214afa52bec7"
+  instance_type               = "t2.micro"
   key_name                    = aws_key_pair.default.id
   security_groups             = ["${aws_security_group.sg_git.id}"]
   associate_public_ip_address = false
@@ -81,8 +81,8 @@ resource "aws_launch_configuration" "git" {
 
 resource "aws_launch_configuration" "jenkins-master" {
   name_prefix                 = "jenkins-master-"
-  image_id                    = "data.aws_ami.amzn.id"
-  instance_type               = "t3.medium"
+  image_id                    = "ami-0ba62214afa52bec7"
+  instance_type               = "t2.micro"
   key_name                    = aws_key_pair.default.id
   security_groups             = ["${aws_security_group.sg_jenkins.id}"]
   associate_public_ip_address = false
@@ -103,8 +103,8 @@ resource "aws_launch_configuration" "jenkins-master" {
 
 resource "aws_launch_configuration" "jenkins-slave" {
   name_prefix                 = "jenkins-slave-"
-  image_id                    = "data.aws_ami.amzn.id"
-  instance_type               = "t3.medium"
+  image_id                    = "ami-0ba62214afa52bec7"
+  instance_type               = "t2.micro"
   key_name                    = aws_key_pair.default.id
   security_groups             = ["${aws_security_group.sg_jenkins.id}"]
   associate_public_ip_address = false
