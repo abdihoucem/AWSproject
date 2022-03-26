@@ -59,7 +59,7 @@ resource "aws_lb_listener" "git-80" {
 
 resource "aws_launch_configuration" "git" {
   name_prefix                 = "git-"
-  image_id                    = data.aws_ami.amazon.id
+  image_id                    = "data.aws_ami.amazon.id"
   instance_type               = "t3.medium"
   key_name                    = aws_key_pair.default.id
   security_groups             = ["${aws_security_group.sg_git.id}"]
@@ -81,12 +81,12 @@ resource "aws_launch_configuration" "git" {
 
 resource "aws_launch_configuration" "jenkins-master" {
   name_prefix                 = "jenkins-master-"
-  image_id                    = data.aws_ami.amzn.id
+  image_id                    = "data.aws_ami.amzn.id"
   instance_type               = "t3.medium"
   key_name                    = aws_key_pair.default.id
   security_groups             = ["${aws_security_group.sg_jenkins.id}"]
   associate_public_ip_address = false
-  user_data                   = file("scripts/jenkins-master.sh")
+  user_data                   = file("script/jenkins-master.sh")
   iam_instance_profile        = aws_iam_instance_profile.ec2-readonly-profile.name
   root_block_device {
     volume_size = var.root_block_device_size
@@ -103,12 +103,12 @@ resource "aws_launch_configuration" "jenkins-master" {
 
 resource "aws_launch_configuration" "jenkins-slave" {
   name_prefix                 = "jenkins-slave-"
-  image_id                    = data.aws_ami.amzn.id
+  image_id                    = "data.aws_ami.amzn.id"
   instance_type               = "t3.medium"
   key_name                    = aws_key_pair.default.id
   security_groups             = ["${aws_security_group.sg_jenkins.id}"]
   associate_public_ip_address = false
-  user_data                   = file("scripts/jenkins-slave.sh")
+  user_data                   = file("script/jenkins-slave.sh")
   root_block_device {
     volume_size = var.root_block_device_size
   }
